@@ -1,7 +1,10 @@
 #!/bin/bash
 
 # Set name of panel
-PANEL_NAME="xfce4-panel"
+PANEL_NAME="lxpanel"
+
+# Set gap for status tray icons
+PANEL_GAP=140
 
 # Get window-id of panel
 PANEL_ID=$(xdotool search -class "$PANEL_NAME" | tail -n 1)
@@ -11,9 +14,6 @@ PANEL_X=$(xwininfo -id "$PANEL_ID" | grep "Absolute upper-left X:" | tr -d -c 0-
 PANEL_Y=$(xwininfo -id "$PANEL_ID" | grep "Absolute upper-left Y:" | tr -d -c 0-9)
 PANEL_WIDTH=$(xwininfo -id "$PANEL_ID" | grep "Width:" | tr -d -c 0-9)
 PANEL_HEIGHT=$(xwininfo -id "$PANEL_ID" | grep "Height:" | tr -d -c 0-9)
-
-# Set gap for status tray icons
-PANEL_GAP=140
 PANEL_WIDTH=$((PANEL_WIDTH-PANEL_GAP))
 
 # Function to check if mouse coordinates are within the specified region
